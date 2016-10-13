@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var Animal = function(name) {
+        this.name = name;
+    };
+    Animal.prototype.run = function() {
+
+    }
+
+    Animal.prototype.speak = function() {
+        console.log("my age is "+ this.age);
+    }
+
+    var Person = function (name,age) {
+        this.age = age;
+        Animal.apply(this,[name]);
+    }
+
+    Person.prototype = new Animal();
+
+    Person.prototype.small = function() {
+
+    }
+    var gy = new Person(12,'gy');
+    console.log("gy.name:"+gy.name);
+    gy.speak();
+
+    var arr = [];
+    arr.push(1,2,3,4);
+    debugger;
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body {
+            padding:0;
+            margin: 0;
+            height: 100%;
+            width:100%;
+
+        }
+
+        #containerMain {
+            border: 2px blue solid;
+            margin-top: 10px;
+        }
+        #main {
+            border:2px red solid;
+            height: 99%;
+            width:99%;
+            min-height: 500px;
+            margin: 15px 5px;
+        }
+        #main span {
+            display: inline-block;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body onresize="resize()">
+    <div id="containerMain">
+        <div id="main">
+
+        </div>
+    </div>
+    <script>
+        var mainDiv = document.getElementById("main");
+        var clientHeight = mainDiv.clientHeight;
+        var scrollHeight = mainDiv.scrollHeight;
+        var scrollTop = mainDiv.scrollTop;
+        mainDiv.innerHTML =
+                "<span>"+"红色为mianDiv,mainDiv.clientHeight:"+clientHeight+"(当前div边框内部的高度)"+
+                ",mainDiv.clientTop:"+ mainDiv.clientTop+"(当前div上边框的宽度)"+
+                ",mainDiv.scrollHeight:"+scrollHeight+"(当前div滚动条内部区域的高度)"+
+                ",document.body.scrollHeight:"+document.body.scrollHeight+"<br/>"+
+                ",mainDiv.scrollTop:"+scrollTop+"<br/>"+
+                ",mainDiv.offsetHeight:"+mainDiv.offsetHeight+
+                ",mainDiv.offsetTop:"+mainDiv.offsetTop+"(当前DIV到浏览器可视区顶部的距离，不包括border)"+
+                "</span>";
+        debugger;
+        window.resize = function () {
+            mainDiv.innerHTML =
+                    "<span>"+
+                    "红色为mianDiv,mainDiv.clientHeight:"+ mainDiv.clientHeight+"(当前div边框内部的高度:contentHeight)"+
+                    ",mainDiv.clientTop:"+ mainDiv.clientTop+"(当前div上边框的宽度)"+
+                    ",mainDiv.scrollHeight:"+scrollHeight+"(当前div滚动条内部区域的高度)"+
+                    ",document.body.scrollHeight:"+document.body.scrollHeight+"<br/>"+
+                    ",mainDiv.scrollTop:"+mainDiv.scrollTop+"<br/>"+
+                    ",document.body.scrollTop:"+document.body.scrollTop+"(对于body的滚动条，滚动条的顶部到浏览器body窗体顶部的距离)"+"<br/>"+
+                    ",mainDiv.offsetHeight:"+mainDiv.offsetHeight+"(border+contentHeight)"+
+                    ",mainDiv.offsetTop:"+mainDiv.offsetTop+"(当前DIV到浏览器可视区顶部的距离，不包括border)"+
+                    "</span>";
+        }
+        window.onscroll = function () {
+            mainDiv.innerHTML =
+                    "<span>"+
+                    "红色为mianDiv,mainDiv.clientHeight:"+ mainDiv.clientHeight+"(当前div边框内部的高度:contentHeight)"+
+                    ",mainDiv.clientTop:"+ mainDiv.clientTop+"(当前div上边框的宽度)"+
+                    ",mainDiv.scrollHeight:"+mainDiv.scrollHeight+
+                    ",document.body.scrollHeight:"+document.body.scrollHeight+"<br/>"+
+                    ",mainDiv.scrollTop:"+mainDiv.scrollTop+"<br/>"+
+                    ",document.body.scrollTop:"+document.body.scrollTop+"(对于body的滚动条，滚动条的顶部到浏览器body窗体顶部的距离)"+"<br/>"+
+                    ",mainDiv.offsetHeight:"+mainDiv.offsetHeight+"(border+contentHeight)"+
+                    ",mainDiv.offsetTop:"+mainDiv.offsetTop+"(当前DIV到浏览器可视区顶部的距离，不包括border)"+
+
+                    "</span>";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //克隆对象
+    function object(obj) {
+        var F = function() {}
+        F.prototype = obj;
+        return new F();
+    }
+    function InPrototype(SubType,SuperType) {
+        //克隆父类原型
+        var prototype = object(SuperType.prototype);
+        //改变克隆构造器指向子类
+        prototype.constructor = SubType;
+        //将父类克隆原型指向子类原型
+        SubType.prototype = prototype;
+    }
+    function Animal(name) {
+        this.name = name;
+    }
+
+    function Person(name,age) {
+        Animal.call(this,name);
+        this.age = age;
+    }
+    InPrototype(Person,Animal);
+    Person.prototype.say = function() {
+        console.log("say----");
+    }
+    var p = new Person('gy',31);
+    p.say();
+    debugger;
+</script>
+</body>
+</html>
